@@ -3,7 +3,7 @@ import { Breakpoint } from 'react-socks';
 import { BASE_POSTER_PATH } from '../../constants/Constants';
 import './MovieList.scss';
 
-const movie = props => (
+const Movie = props => (
   <>
     <Breakpoint medium up>
       <div className="movie-component">
@@ -48,4 +48,4 @@ const movie = props => (
   </>
 );
 
-export default movie;
+export default Movie;

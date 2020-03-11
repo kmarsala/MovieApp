@@ -12,7 +12,7 @@ import MovieDetailsContainer from './containers/MovieDetails/MovieDetailsContain
 import Header from './containers/Header/Header';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <BreakpointProvider>
       <div className="App">

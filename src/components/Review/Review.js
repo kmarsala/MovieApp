@@ -4,7 +4,7 @@ import './Review.scss';
 const Review = props => {
   const [expandedReview, setExpandedReview] = useState(false);
 
-  const toggleReview = () => () => {
+  const toggleReview = () => {
     setExpandedReview(!expandedReview);
   };
 
@@ -18,7 +18,7 @@ const Review = props => {
               {props.review.content}
             </p>
           </div>
-          <span className="mobile-review" onClick={toggleReview()}>
+          <span className="mobile-review" onClick={toggleReview}>
             Show more...
           </span>
         </>
@@ -29,7 +29,7 @@ const Review = props => {
             <strong>By:{props.review.author} </strong>
             {props.review.content}
           </p>
-          <span className="mobile-review" onClick={toggleReview()}>
+          <span className="mobile-review" onClick={toggleReview}>
             Show less...
           </span>
         </>

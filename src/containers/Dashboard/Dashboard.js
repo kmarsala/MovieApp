@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Breakpoint } from 'react-socks';
 import './Dashboard.scss';
 
-export class Dashboard extends Component {
-  render() {
+const Dashboard = () => {
     return (
       <>
         <Breakpoint large up>
@@ -94,6 +93,5 @@ export class Dashboard extends Component {
       </>
     );
   }
-}
 
 export default Dashboard;
