@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MovieList from '../components/MovieList';
 
-export const useLoadMovies = (getMovies) => {
+export const useLoadMovies = (getMovies, refresh = null) => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -10,14 +10,14 @@ export const useLoadMovies = (getMovies) => {
         const loadData = async () => {
             try {
                 const movieList = await getMovies();
-                setMovies(movieList)
+                setMovies(movieList);
             } catch (err) {
-                setError(true)
+                setError(true);
             }
             setLoading(false);
         }
         loadData();
-    }, []);
+    }, [refresh]);
 
     if (error) {
         return <h3>Woops, something went wrong trying to fetch movies.</h3>;
@@ -26,7 +26,10 @@ export const useLoadMovies = (getMovies) => {
     if (loading) {
         return <h3>Loading movie data now...</h3>;
     }
-    console.log(movies)
-    return <MovieList movies={movies} />;
+    console.log('movies', movies)
+    if (movies) {
+        return <MovieList movies={movies} />;
+    }
+    return <></>;
 }
 

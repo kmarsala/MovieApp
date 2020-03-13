@@ -1,67 +1,39 @@
 import React, { useState } from 'react';
-import { Breakpoint } from 'react-socks';
+import { useLoadMovies } from '../../hoc/LoadMovies'
+import { Input } from 'antd';
 import * as movieAPI from '../../services/movieAPI';
-import MovieInfo from './MovieInfo';
-import './MovieSearch.scss';
+import './MovieSearch.less';
+
+const { Search } = Input;
 
 const MovieSearch = () => {
   const [value, setValue] = useState('');
-  const [movies, setMovies] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [prevSearch, setPrevSearch] = useState(null);
+  const [refresh, setRefresh] = useState(false);
 
-  const handleChange = event => {
-    event.preventDefault();
-    setValue(event.target.value);
-  };
-
-  const handleSubmit = async event => {
-    event.preventDefault();
-    try {
-      setLoading(true);
-      const movies = await movieAPI.searchMovies(value);
-      setMovies(movies);
-      setPrevSearch(value);
-      setValue('');
-    } catch (err) {
-      setError(true);
+  const getMovies = async () => {
+    if (value) {
+      return movieAPI.searchMovies(value);
     }
-    setLoading(false);
-  };
+    return null;
+  }
+
+  const movies = useLoadMovies(getMovies, refresh);
+
 
   return (
     <>
       <h1>Movie Search</h1>
-      <form className="search-form-wrapper" onSubmit={handleSubmit}>
-        <Breakpoint medium up>
-          <label className="search-label">
-            Search Movie Titles Here:
-              <input
-              className="search-input"
-              type="text"
-              value={value}
-              onChange={handleChange}
-              placeholder="Movie title"
-            />
-          </label>
-          <input type="submit" value="Search" />
-        </Breakpoint>
-        <Breakpoint small down>
-          <label className="search-label">
-            Search Movie Titles Here:
-              <input
-              className="search-input"
-              type="text"
-              value={value}
-              onChange={handleChange}
-              placeholder="Movie title"
-            />
-          </label>
-          <input type="submit" value="Search" />
-        </Breakpoint>
-      </form>
-      <MovieInfo loading={loading} movies={movies} error={error} prevSearch={prevSearch} />
+      <Search
+        enterButton
+        allowClear
+        placeholder="Search by Movie Titles..."
+        onSearch={value => {
+          setValue(value);
+          setRefresh(!refresh)
+        }}
+        style={{ width: 300 }}
+      />
+      {movies}
     </>
   );
 }
