@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useLoadMovies } from '../../hoc/LoadMovies'
 import { Input } from 'antd';
+import { useLoadMovies } from '../../hoc/LoadMovies';
 import * as movieAPI from '../../services/movieAPI';
 import './MovieSearch.less';
 
@@ -37,4 +37,5 @@ const MovieSearch = () => {
     </>
   );
 }
+
 export default MovieSearch;
