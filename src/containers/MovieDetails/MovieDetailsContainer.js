@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Breakpoint } from 'react-socks';
-import { withLastLocation } from 'react-router-last-location';
+import { useHistory } from 'react-router-dom'
 import { getMovieDetailsById, getMovieReviews } from '../../services/movieAPI';
 import MovieDetails from './MovieDetails';
 import MovieDetailsMobile from './MovieDetailsMobile';
@@ -11,6 +11,9 @@ const MovieDetailsContainer = props => {
   const [movieReviews, setMovieReviews] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  const history = useHistory();
+
 
   useEffect(() => {
     const loadData = async () => {
@@ -30,13 +33,6 @@ const MovieDetailsContainer = props => {
   })
 
 
-  let pathname;
-
-  if (props.lastLocation === null) {
-    pathname = '/';
-  } else {
-    pathname = props.lastLocation.pathname;
-  }
 
   let movieDetails = null;
 
@@ -61,7 +57,7 @@ const MovieDetailsContainer = props => {
         <div className="movie-details-title">
           <i
             className="fa fa-chevron-left"
-            onClick={() => props.history.push(`${pathname}`)}
+            onClick={() => history.goBack()}
             aria-hidden="true"
           />
           <h1>{movieInfo.title}</h1>
@@ -74,7 +70,6 @@ const MovieDetailsContainer = props => {
         </Breakpoint>
         <Breakpoint large up>
           <MovieDetails
-            pathname={pathname}
             movieInfo={movieInfo}
             movieReviews={movieReviews}
           />
@@ -87,4 +82,4 @@ const MovieDetailsContainer = props => {
 }
 
 
-export default withLastLocation(MovieDetailsContainer);
+export default MovieDetailsContainer;

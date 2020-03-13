@@ -8,7 +8,6 @@ import './Dashboard.scss';
 const Dashboard = () => {
   return (
     <>
-      <Button type="primary">Button</Button>
       <Breakpoint large up>
         <div className="dashboard" data-testid="main__dashboard">
           <div className="dashboard-card-wrapper">

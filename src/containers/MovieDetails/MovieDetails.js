@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   BASE_BACKDROP_PATH,
   BASE_POSTER_PATH,
@@ -7,7 +7,7 @@ import Review from '../../components/Review/Review';
 import './MovieDetails.scss';
 
 const MovieDetails = props => {
-  const { movieInfo, movieReviews } = this.props;
+  const { movieInfo, movieReviews } = props;
   let reviews;
   let otherReviews;
 

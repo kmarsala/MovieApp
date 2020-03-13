@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { withLastLocation } from 'react-router-last-location';
+import { useHistory } from 'react-router-dom'
 import { Breakpoint } from 'react-socks';
 import MovieList from '../../components/Movie/MovieList';
 import * as movieAPI from '../../services/movieAPI';
@@ -9,6 +9,8 @@ const GenreList = props => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  const history = useHistory();
 
   useEffect(() => {
     const loadData = async () => {
@@ -30,7 +32,7 @@ const GenreList = props => {
     <>
       <div
         className="genre-search-title"
-        onClick={() => props.history.push('/genres')}
+        onClick={() => history.goBack()}
       >
         <Breakpoint medium up>
           <div>
@@ -50,4 +52,4 @@ const GenreList = props => {
 }
 
 
-export default withLastLocation(GenreList);
+export default GenreList;
