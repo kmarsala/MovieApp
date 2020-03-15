@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { NavLink } from 'react-router-dom';
+import { Layout } from 'antd';
 import TmdbIcon from '../../assets/tmdb-power.png';
 import './Sidebar.scss';
+
+const { Sider } = Layout;
+
 
 const Sidebar = () => {
   const [expandedLinks, setExpandedLinks] = useState(false);
@@ -12,7 +16,7 @@ const Sidebar = () => {
   };
 
   return (
-    <>
+    <Sider>
       <ul className="sidebar-top">
         <div className="sidebar-links">
           <li className="sidebar-link bars" onClick={toggleLinks}>
@@ -49,7 +53,7 @@ const Sidebar = () => {
           </li>
         </div>
       </CSSTransition>
-    </>
+    </Sider>
   );
 };
 
