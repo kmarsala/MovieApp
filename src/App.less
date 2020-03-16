@@ -1,9 +1,30 @@
 .App {
   text-align: center;
   font-family: sans-serif;
-
+  
+  
   .ant-layout-content {
+    background-color: #E2E2E2;
     height: calc(100vh - 75px);
-    overflow: scroll;
+    width: 100%;
+    overflow-y: scroll;
+  }
+
+  .page-header {
+    border-bottom: 1px solid #081c24;
+    text-align: left;
+    color: #081c24;
+    font-size: 32px;
+    position: fixed;
+    margin: 0 38px;
+    padding: 20px 0;
+    z-index: 10;
+    width: 96vw;
+    background-color: #E2E2E2;
+  }
+
+  .page-content {
+    margin: 110px 44px;
+    width: 95vw;
   }
 }

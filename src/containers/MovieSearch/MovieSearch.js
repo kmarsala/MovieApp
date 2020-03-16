@@ -22,17 +22,17 @@ const MovieSearch = () => {
 
   return (
     <>
-      <h1>Movie Search</h1>
+      <h1 className="page-header search-header" >Movie Search
       <Search
-        enterButton
-        allowClear
-        placeholder="Search by Movie Titles..."
-        onSearch={value => {
-          setValue(value);
-          setRefresh(!refresh)
-        }}
-        style={{ width: 300 }}
-      />
+          enterButton
+          allowClear
+          placeholder="Search by Movie Titles..."
+          onSearch={value => {
+            setValue(value);
+            setRefresh(!refresh)
+          }}
+        />
+      </h1>
       {movies}
     </>
   );

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLoadMovies } from '../../hoc/LoadMovies';
 import * as movieAPI from '../../services/movieAPI';
-import './NowPlaying.scss';
 
 const NowPlaying = () => {
 
@@ -13,7 +12,7 @@ const NowPlaying = () => {
 
   return (
     <>
-      <h1 className="now-playing-title">Movies In Theaters Now</h1>
+      <h1 className="page-header">Movies In Theaters Now</h1>
       {movies}
     </>
   );

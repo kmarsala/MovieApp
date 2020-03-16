@@ -3,8 +3,6 @@ import { List } from 'antd'
 import MovieCard from './MovieCard';
 
 const MovieList = ({ movies }) => {
-
-
     return (
         <List
             grid={{
@@ -16,6 +14,7 @@ const MovieList = ({ movies }) => {
                 xl: 3,
                 xxl: 3,
             }}
+            className='page-content'
             dataSource={movies}
             renderItem={movie => (
                 <List.Item>

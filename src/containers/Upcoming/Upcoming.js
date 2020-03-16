@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLoadMovies } from '../../hoc/LoadMovies'
 import * as movieAPI from '../../services/movieAPI';
-import './Upcoming.scss';
 
 const Upcoming = () => {
   const getMovies = async () => {
@@ -12,7 +11,7 @@ const Upcoming = () => {
 
   return (
     <>
-      <h1>Upcoming Movies</h1>
+      <h1 className="page-header">Upcoming Movies</h1>
       {movies}
     </>
   );

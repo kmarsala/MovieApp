@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { List } from 'antd';
 import Genre from '../../components/Genre/Genre';
 import * as movieAPI from '../../services/movieAPI';
-import './Genres.less';
 
 const Genres = () => {
   const [genres, setGenres] = useState([])
@@ -38,8 +37,8 @@ const Genres = () => {
 
 
   return (
-    <div className="genres-page">
-      <h1>Choose a Genre</h1>
+    <>
+      <h1 className="page-header" > Choose a Genre</h1>
       {info}
       <List
         grid={{
@@ -50,8 +49,9 @@ const Genres = () => {
           lg: 3,
           xl: 4,
           xxl: 4,
-        }}
-        className='genreList'
+        }
+        }
+        className='page-content'
         dataSource={genres}
         renderItem={genre => (
           <List.Item>
@@ -64,7 +64,7 @@ const Genres = () => {
           </List.Item>
         )}
       />
-    </div>
+    </>
   );
 }
 

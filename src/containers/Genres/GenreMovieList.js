@@ -2,7 +2,7 @@ import React from 'react';
 import { Breakpoint } from 'react-socks';
 import { useLoadMovies } from '../../hoc/LoadMovies';
 import * as movieAPI from '../../services/movieAPI';
-import './Genres.less';
+import './GenreMovieList.less';
 
 const GenreMovieList = props => {
 
@@ -18,18 +18,9 @@ const GenreMovieList = props => {
 
   return (
     <>
-      <div className="genre-search-title" onClick={goToGenres}>
-        <Breakpoint medium up>
-          <div>
-            <i className="fa fa-chevron-left" aria-hidden="true" />
-            <p>Back to Genres</p>
-          </div>
-          <h1>{props.match.params.genreName} Movies</h1>
-        </Breakpoint>
-        <Breakpoint small down>
-          <i className="fa fa-chevron-left" aria-hidden="true" />
-          <h1>{props.match.params.genreName}</h1>
-        </Breakpoint>
+      <div className="page-header genre-header" onClick={goToGenres}>
+        <i className="fa fa-chevron-left" aria-hidden="true" />
+        <h1>{props.match.params.genreName}</h1>
       </div>
       {movies}
     </>
