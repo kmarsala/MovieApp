@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BASE_POSTER_PATH } from '../../constants/Constants';
 import Review from '../../components/Review/Review';
 import './MovieDetailsMobile.scss';

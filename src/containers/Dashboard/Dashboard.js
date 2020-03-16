@@ -1,98 +1,32 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Breakpoint } from 'react-socks';
-import { Button } from 'antd';
+import { List } from 'antd';
+import DashboardLink from './DashboardLink';
+import './Dashboard.less';
 
-import './Dashboard.scss';
+const LINKS = [{ name: 'Now Playing', icon: 'fa fa-ticket', route: '/nowplaying' },
+{ name: 'Upcoming Releases', icon: 'fa fa-video-camera', route: '/upcoming' },
+{ name: 'Genres', icon: 'fa fa-film', route: '/genres' }]
 
 const Dashboard = () => {
   return (
-    <>
-      <Breakpoint large up>
-        <div className="dashboard" data-testid="main__dashboard">
-          <div className="dashboard-card-wrapper">
-            <NavLink to="/nowplaying">
-              <div>
-                <i className="fa fa-ticket" aria-hidden="true" />
-                <h1>Now Playing</h1>
-              </div>
-            </NavLink>
-          </div>
-          <div className="dashboard-card-wrapper">
-            <NavLink to="/upcoming">
-              <div>
-                <i className="fa fa-video-camera" aria-hidden="true" />
-                <h1>Upcoming Releases</h1>
-              </div>
-            </NavLink>
-          </div>
-          <div className="dashboard-card-wrapper">
-            <NavLink to="/genres">
-              <div>
-                <i className="fa fa-film" aria-hidden="true" />
-                <h1>Genres</h1>
-              </div>
-            </NavLink>
-          </div>
-        </div>
-      </Breakpoint>
-      <Breakpoint medium only>
-        <div className="dashboard-tablet" data-testid="main__dashboard">
-          <div className="dashboard-card-wrapper">
-            <NavLink to="/nowplaying">
-              <div>
-                <i className="fa fa-ticket" aria-hidden="true" />
-                <h1>Now Playing</h1>
-              </div>
-            </NavLink>
-          </div>
-          <div className="dashboard-card-wrapper">
-            <NavLink to="/upcoming">
-              <div>
-                <i className="fa fa-video-camera" aria-hidden="true" />
-                <h1>Upcoming Releases</h1>
-              </div>
-            </NavLink>
-          </div>
-          <div className="dashboard-card-wrapper">
-            <NavLink to="/genres">
-              <div>
-                <i className="fa fa-film" aria-hidden="true" />
-                <h1>Genres</h1>
-              </div>
-            </NavLink>
-          </div>
-        </div>
-      </Breakpoint>
-      <Breakpoint small down>
-        <div className="dashboard-mobile" data-testid="main__dashboard">
-          <div className="dashboard-card-wrapper">
-            <NavLink to="/nowplaying">
-              <div>
-                <i className="fa fa-ticket" aria-hidden="true" />
-                <h1>Now Playing</h1>
-              </div>
-            </NavLink>
-          </div>
-          <div className="dashboard-card-wrapper">
-            <NavLink to="/upcoming">
-              <div>
-                <i className="fa fa-video-camera" aria-hidden="true" />
-                <h1>Upcoming Releases</h1>
-              </div>
-            </NavLink>
-          </div>
-          <div className="dashboard-card-wrapper">
-            <NavLink to="/genres">
-              <div>
-                <i className="fa fa-film" aria-hidden="true" />
-                <h1>Genres</h1>
-              </div>
-            </NavLink>
-          </div>
-        </div>
-      </Breakpoint>
-    </>
+    <List
+      grid={{
+        gutter: 16,
+        xs: 1,
+        sm: 1,
+        md: 2,
+        lg: 3,
+        xl: 3,
+        xxl: 3,
+      }}
+      className='dashboard'
+      dataSource={LINKS}
+      renderItem={link => (
+        <List.Item>
+          <DashboardLink linkInfo={link} />
+        </List.Item>
+      )}
+    />
   );
 }
 

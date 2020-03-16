@@ -1,8 +1,5 @@
 import React from 'react';
 import { Card } from 'antd'
-// import { Breakpoint } from 'react-socks';
-import { Redirect } from 'react-router-dom';
-
 import { BASE_POSTER_PATH } from '../constants/Constants';
 import './MovieCard.less';
 

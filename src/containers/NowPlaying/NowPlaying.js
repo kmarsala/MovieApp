@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import MovieList from '../../components/Movie/MovieList';
+import React from 'react';
 import { useLoadMovies } from '../../hoc/LoadMovies'
 import * as movieAPI from '../../services/movieAPI';
 import './NowPlaying.scss';
