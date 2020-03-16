@@ -1,92 +1,69 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
-import { Breakpoint } from 'react-socks';
+import { List } from 'antd';
 import Genre from '../../components/Genre/Genre';
 import * as movieAPI from '../../services/movieAPI';
-import './Genres.scss';
+import './Genres.less';
 
-const Genres = props => {
+const Genres = () => {
   const [genres, setGenres] = useState([])
-  const [selectedGenre, setSelectedGenre] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-  const [selectedGenreName, setSelectedGenreName] = useState('')
 
   useEffect(() => {
     const loadData = async () => {
       try {
         const genreList = await movieAPI.getAllGenres();
-        setGenres(genreList)
+        setGenres(genreList);
       } catch (err) {
-        setError(true)
+        setError(true);
       }
-      setLoading(false)
+      setLoading(false);
     }
     loadData();
   })
 
-
   const selectedGenreHandler = (genreId, genreName) => {
-    setSelectedGenre(genreId)
-    setSelectedGenreName(genreName)
+    window.location.href = `/genres/${genreName}/${genreId}`;
   };
 
-  const renderRedirect = () => {
-    if (selectedGenre !== 0 && selectedGenreName !== '') {
-      return (
-        <Redirect
-          to={`/genres/${selectedGenreName}/${selectedGenre}`}
-        />
-      );
-    }
-  };
-
-  let genreInfo = null;
   let info = null;
 
-  if (!loading && !error && genres.length) {
-    genreInfo = genres.map(genre => {
-      return (
-        <Genre
-          key={genre.id}
-          id={genre.id}
-          name={genre.name}
-          goToGenreList={selectedGenreHandler}
-        />
-      );
-    });
-  }
-
   if (error) {
-    info = 'Woops, something went wrong trying to fetch genres.';
+    info = <h3>Woops, something went wrong trying to fetch genres.</h3>;
   }
 
   if (loading) {
-    info = 'Loading genre data now...';
+    info = <h3>Loading genre data now...</h3>;
   }
+
 
   return (
     <div className="genres-page">
       <h1>Choose a Genre</h1>
-      {(error || loading) && <h3 className="genre-info">{info}</h3>}
-      <Breakpoint large up>
-        <div className="genre-list">
-          {renderRedirect()}
-          {genreInfo}
-        </div>
-      </Breakpoint>
-      <Breakpoint medium>
-        <div className="genre-list">
-          {renderRedirect()}
-          {genreInfo}
-        </div>
-      </Breakpoint>
-      <Breakpoint small down>
-        <div className="genre-list">
-          {renderRedirect()}
-          {genreInfo}
-        </div>
-      </Breakpoint>
+      {info}
+      <List
+        grid={{
+          gutter: 16,
+          xs: 1,
+          sm: 2,
+          md: 3,
+          lg: 3,
+          xl: 4,
+          xxl: 4,
+        }}
+        className='genreList'
+        dataSource={genres}
+        renderItem={genre => (
+          <List.Item>
+            <Genre
+              key={genre.id}
+              id={genre.id}
+              name={genre.name}
+              goToGenreList={selectedGenreHandler}
+            />
+          </List.Item>
+        )}
+      />
     </div>
   );
 }

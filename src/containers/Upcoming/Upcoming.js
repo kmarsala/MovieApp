@@ -1,34 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import MovieList from '../../components/Movie/MovieList';
+import React from 'react';
+import { useLoadMovies } from '../../hoc/LoadMovies'
 import * as movieAPI from '../../services/movieAPI';
 import './Upcoming.scss';
 
 const Upcoming = () => {
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const getMovies = async () => {
+    return movieAPI.getUpcoming();
+  }
 
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const movies = await movieAPI.getUpcoming();
-        setMovies(movies)
-      } catch (err) {
-        setError(true)
-      }
-      setLoading(false)
-    }
-    loadData();
-  })
+  const movies = useLoadMovies(getMovies)
 
   return (
     <>
       <h1>Upcoming Movies</h1>
-      <MovieList
-        loading={loading}
-        error={error}
-        movies={movies}
-      />
+      {movies}
     </>
   );
 }

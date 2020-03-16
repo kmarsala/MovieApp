@@ -7,13 +7,12 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import Upcoming from './containers/Upcoming/Upcoming';
 import MovieSearch from './containers/MovieSearch/MovieSearch';
 import Genres from './containers/Genres/Genres';
-import GenreList from './containers/Genres/GenreList';
+import GenreList from './containers/Genres/GenreMovieList';
 import MovieDetailsContainer from './containers/MovieDetails/MovieDetailsContainer';
 import Header from './containers/Header/MyHeader';
 import './App.less';
 
 const { Content } = Layout;
-
 
 const App = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoadMovies } from '../../hoc/LoadMovies'
+import { useLoadMovies } from '../../hoc/LoadMovies';
 import * as movieAPI from '../../services/movieAPI';
 import './NowPlaying.scss';
 
@@ -9,7 +9,7 @@ const NowPlaying = () => {
     return movieAPI.getNowPlaying();
   }
 
-  const movies = useLoadMovies(getMovies)
+  const movies = useLoadMovies(getMovies);
 
   return (
     <>
@@ -18,6 +18,5 @@ const NowPlaying = () => {
     </>
   );
 }
-
 
 export default NowPlaying;

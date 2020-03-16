@@ -1,5 +1,5 @@
 import React from 'react';
-import './Genre.scss';
+import './Genre.less';
 
 const Genre = props => {
   const { id, name, goToGenreList } = props;
