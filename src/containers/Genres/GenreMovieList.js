@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { Breakpoint } from 'react-socks';
 import { useLoadMovies } from '../../hoc/LoadMovies';
 import * as movieAPI from '../../services/movieAPI';
@@ -11,15 +10,15 @@ const GenreMovieList = props => {
     return movieAPI.getMoviesByGenre(props.match.params.genreId);
   }
 
-  const history = useHistory();
+  const goToGenres = () => {
+    window.location.href = `/genres`;
+  };
+
   const movies = useLoadMovies(getMovies);
 
   return (
     <>
-      <div
-        className="genre-search-title"
-        onClick={() => history.goBack()}
-      >
+      <div className="genre-search-title" onClick={goToGenres}>
         <Breakpoint medium up>
           <div>
             <i className="fa fa-chevron-left" aria-hidden="true" />
