@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoadMovies } from '../../hoc/LoadMovies';
+import { useLoadMovies } from '../../hooks/useLoadMovies';
 import * as movieAPI from '../../services/movieAPI';
 
 const NowPlaying = () => {

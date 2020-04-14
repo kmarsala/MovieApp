@@ -2,16 +2,31 @@
     height: 75px;
     background-color: #081c24;
     display: grid;
-    grid-template-columns: 50% 1fr 1fr 1fr 1fr;
+    grid-template-columns: auto auto auto auto auto;
     grid-column-gap: 20px;
     text-align: left;
-
-    img {
-        height: 50px;
-    }
 
     a {
         align-self: center;
         font-size: 24px;
     }
+    .active {
+        color: blue
+    }
 }
+
+.small-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+
+    .anticon-menu {
+      font-size: 50px;
+      color: white;
+    }
+  }
+
+  .logo{
+    height: 50px;
+  }

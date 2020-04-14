@@ -8,18 +8,19 @@ const Genres = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const genreList = await movieAPI.getAllGenres();
-        setGenres(genreList);
-      } catch (err) {
-        setError(true);
-      }
-      setLoading(false);
+  const loadData = async () => {
+    try {
+      const genreList = await movieAPI.getAllGenres();
+      setGenres(genreList);
+    } catch (err) {
+      setError(true);
     }
+    setLoading(false);
+  }
+
+  useEffect(() => {
     loadData();
-  })
+  }, [])
 
   const selectedGenreHandler = (genreId, genreName) => {
     window.location.href = `/genres/${genreName}/${genreId}`;

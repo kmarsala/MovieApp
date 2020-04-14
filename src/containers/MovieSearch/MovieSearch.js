@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input } from 'antd';
-import { useLoadMovies } from '../../hoc/LoadMovies';
+import { useLoadMovies } from '../../hooks/useLoadMovies';
 import * as movieAPI from '../../services/movieAPI';
 import './MovieSearch.less';
 

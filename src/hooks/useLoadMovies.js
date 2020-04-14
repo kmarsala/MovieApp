@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MovieList from '../components/MovieList';
+import MovieList from '../components/NewComponents/MovieList';
 
 export const useLoadMovies = (getMovies, refresh = null) => {
     const [movies, setMovies] = useState([]);
@@ -26,10 +26,12 @@ export const useLoadMovies = (getMovies, refresh = null) => {
     if (loading) {
         return <h3>Loading movie data now...</h3>;
     }
-    console.log('movies', movies)
+
+    console.log('LOAD MOVIES: ', movies)
     if (movies) {
         return <MovieList movies={movies} />;
     }
+
     return <></>;
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Breakpoint } from 'react-socks';
-import { useLoadMovies } from '../../hoc/LoadMovies';
+import { useLoadMovies } from '../../hooks/useLoadMovies';
 import * as movieAPI from '../../services/movieAPI';
 import './GenreMovieList.less';
 

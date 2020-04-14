@@ -4,7 +4,7 @@ import Review from '../../components/Review/Review';
 import './MovieDetailsMobile.scss';
 
 const MovieDetailsMobile = props => {
-  const { movieInfo, movieReviews } = this.props;
+  const { movieInfo, movieReviews } = props;
   let reviews;
   let otherReviews;
 

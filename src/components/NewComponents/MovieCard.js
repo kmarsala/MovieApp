@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'antd'
-import { BASE_POSTER_PATH } from '../constants/Constants';
+import { BASE_POSTER_PATH } from '../../constants/Constants';
 import './MovieCard.less';
 
 const MovieCard = ({ movie }) => {

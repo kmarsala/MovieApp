@@ -1,15 +1,15 @@
-import React from 'react';
-import './Card.scss';
+// import React from 'react';
+// import './Card.scss';
 
-const Card = props => (
-  <div
-    className="card-component"
-    style={props.style || null}
-    onClick={() => props.goToMovieDetails(props.movieId)}
-  >
-    {props.children}
-  </div>
+// const Card = props => (
+//   <div
+//     className="card-component"
+//     style={props.style || null}
+//     onClick={() => props.goToMovieDetails(props.movieId)}
+//   >
+//     {props.children}
+//   </div>
 
-);
+// );
 
-export default Card;
+// export default Card;
