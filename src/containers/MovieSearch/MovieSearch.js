@@ -24,6 +24,7 @@ const MovieSearch = () => {
     <>
       <h1 className="page-header search-header" >Movie Search
       <Search
+          size="large"
           enterButton
           allowClear
           placeholder="Search by Movie Titles..."
