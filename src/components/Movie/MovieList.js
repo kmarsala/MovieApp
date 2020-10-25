@@ -1,77 +1,29 @@
-// import React, { useState } from 'react';
-// import { Redirect } from 'react-router-dom';
-// import { Breakpoint } from 'react-socks';
-// import Movie from './Movie';
-// import Card from '../Card/Card';
-// import './MovieList.scss';
+import React from 'react';
+import { List } from 'antd'
+import MovieCard from './MovieCard';
 
-// const MovieList = props => {
-//   const [movieId, setMovieId] = useState(null);
-//   const [hasMovieDetails, setHasMovieDetails] = useState(false);
-
-//   const selectedMovieHandler = id => {
-//     if (id !== null) {
-//       setMovieId(id);
-//     }
-//   };
-
-//   const renderRedirect = () => {
-//     if (hasMovieDetails) {
-//       return <Redirect to={`/movie/${movieId}`} />;
-//     }
-//   };
-
-//   const { error, loading, movies } = props;
-//   let movieInfo = null;
-
-//   if (!loading && !error && movies.length > 0) {
-//     movieInfo = movies.map(movie => {
-//       return (
-//         <Card
-//           key={movie.id}
-//           movieId={movie.id}
-//           goToMovieDetails={selectedMovieHandler}
-//         >
-//           <Movie
-//             title={movie.title}
-//             overview={movie.overview}
-//             poster={movie.poster_path}
-//             released={movie.release_date}
-//           />
-//         </Card>
-//       );
-//     });
-//   }
-
-//   if (error) {
-//     movieInfo = (
-//       <h3>
-//         Woops, something went wrong trying to fetch movies in theaters now.
-//         </h3>
-//     );
-//   }
-
-//   if (loading) {
-//     movieInfo = <h3>Loading movie data now...</h3>;
-//   }
-
-//   return (
-//     <>
-//       <Breakpoint medium up>
-//         <div className="movie-list">
-//           {renderRedirect()}
-//           {movieInfo}
-//         </div>
-//       </Breakpoint>
-//       <Breakpoint small down>
-//         <div className="movie-list-mobile">
-//           {renderRedirect()}
-//           {movieInfo}
-//         </div>
-//       </Breakpoint>
-//     </>
-//   );
-// }
+const MovieList = ({ movies }) => {
+    return (
+        <List
+            grid={{
+                gutter: 16,
+                xs: 1,
+                sm: 2,
+                md: 2,
+                lg: 2,
+                xl: 3,
+                xxl: 3,
+            }}
+            className='page-content'
+            dataSource={movies}
+            renderItem={movie => (
+                <List.Item>
+                    <MovieCard movie={movie} />
+                </List.Item>
+            )}
+        />
+    );
+}
 
 
-// export default MovieList;
+export default MovieList;

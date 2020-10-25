@@ -10,15 +10,18 @@ const MovieCard = ({ movie }) => {
     };
 
     return (
-        <Card hoverable className="movie-card" onClick={() => renderRedirect(movie.id)}>
-            {movie.poster_path && (
-                <img
-                    src={`${BASE_POSTER_PATH}/w300${movie.poster_path}`}
-                    alt="movie poster"
-                    className="movie-poster"
-                />
-            )}
-            <div className="movie-details">
+        //onClick={() => renderRedirect(movie.id)}
+        <Card hoverable className="movie-card" >
+            {
+                movie.poster_path && (
+                    <img
+                        src={`${BASE_POSTER_PATH}/w300${movie.poster_path}`}
+                        alt="movie poster"
+                        className="movie-poster"
+                    />
+                )
+            }
+            < div className="movie-details" >
                 <h1 className="movie-title">{movie.title}</h1>
                 <p className="movie-overview">
                     <strong>Synopsis:</strong> {movie.overview}
@@ -26,8 +29,8 @@ const MovieCard = ({ movie }) => {
                 <p className="movie-released">
                     <strong>Release Date:</strong> {movie.released}
                 </p>
-            </div>
-        </Card>
+            </div >
+        </Card >
     )
 };
 

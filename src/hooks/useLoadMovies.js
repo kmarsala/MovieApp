@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MovieList from '../components/NewComponents/MovieList';
+import MovieList from '../components/Movie/MovieList';
 
 export const useLoadMovies = (getMovies, refresh = null) => {
     const [movies, setMovies] = useState([]);
